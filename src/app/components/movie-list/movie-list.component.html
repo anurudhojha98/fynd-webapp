@@ -24,7 +24,7 @@
           </mat-form-field>
            <button mat-stroked-button color="primary" style="width: 75px;height:40px;margin:10px"(click)="genreFilter()" >FILTER</button> 
            <button mat-mini-fab color="accent" style="margin: 8px 0px 0px 100px;" aria-label="Example icon button with a bookmark icon"
-           (click)="addMovie('data')">
+           (click)="addMovie('data')" *ngIf="isAdmin">
                <mat-icon>add</mat-icon>
              </button>
    </div>

@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl:'https://movquick-review-api.herokuapp.com/api',
-  authUrl:'https://movquick-review-api.herokuapp.com/user'
+  apiUrl:'http://localhost:3000/api',
+  authUrl:'http://localhost:3000/user'
 };
 
 /*
