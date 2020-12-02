@@ -5,16 +5,16 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
 
 const routes: Routes = [
   {
-    path:'',redirectTo:'/movies-list',pathMatch:'full'
-  },
-  {
-    path:'/',redirectTo:'/movies-list',pathMatch:'full'
-  },
-  {
     path:'login',component:LoginComponent
   },
   {
     path:'movies-list',component:MovieListComponent
+  },
+  {
+    path:'',redirectTo:'/movies-list',pathMatch:'full'
+  },
+  {
+    path:'/',redirectTo:'/movies-list',pathMatch:'full'
   },
   {
     path:'**',redirectTo:'/movies-list',pathMatch:'full'
