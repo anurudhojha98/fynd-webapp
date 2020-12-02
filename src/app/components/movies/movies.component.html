@@ -1,0 +1,59 @@
+<h2 mat-dialog-title *ngIf="!isUpdate">Add Movie</h2>
+<h2 mat-dialog-title *ngIf="isUpdate">Update Movie</h2>
+<mat-dialog-content class="mat-typography">
+        <form class="example-form" [formGroup]="movieForm">
+                <mat-form-field class="example-full-width">
+                  <mat-label>NAME</mat-label>
+                  <input type="text" matInput placeholder="Movie Name"  formControlName="movieName" [errorStateMatcher]="matcher" required >
+                  <mat-error *ngIf="movieForm.get('movieName').hasError('required')">
+                    Movie name is <strong>required</strong>
+                  </mat-error>
+              
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>99POPULARITY</mat-label>
+                    <input  type="number" matInput placeholder="99Popularity"   formControlName="popularity" [errorStateMatcher]="matcher" required >
+                    <mat-error *ngIf="movieForm.get('popularity').hasError('required')">
+                        99Popularity is <strong>required</strong>
+                      </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                        <mat-label>DIRECTOR</mat-label>
+                        <input  type="text" matInput placeholder="Director"   formControlName="director" [errorStateMatcher]="matcher" required>
+                        <mat-error *ngIf="movieForm.get('director').hasError('required')">
+                                Director name is <strong>required</strong>
+                              </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                        <mat-label>IMDB_SCORE</mat-label>
+                        <input  type="number" matInput placeholder="Imdb score"  formControlName="imdbScore" [errorStateMatcher]="matcher" required>
+                        <mat-error *ngIf="movieForm.get('imdbScore').hasError('required')">
+                                IMDB Score is <strong>required</strong>
+                        </mat-error>
+                </mat-form-field>
+                      <mat-form-field style="width: 100%">
+                        <mat-label>GENRE</mat-label>
+                        <mat-select formControlName="genre" name="genre" multiple (selectionChange)="change($event.value)">
+                          <mat-select-trigger>
+                            <mat-chip-list>
+                              <mat-chip *ngFor="let genres of movieForm.get('genre')?.value"
+                                [removable]="true" (removed)="onGenreRemoved(genres)">
+                                {{ genres }}
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                              </mat-chip>
+                            </mat-chip-list>
+                          </mat-select-trigger>
+                      
+                          <mat-option *ngFor="let gen of genreList" [value]="gen">{{gen}}</mat-option>
+                      
+                        </mat-select>
+                      </mat-form-field>
+                      
+                      <br/> <!-- only for debug -->
+                      <!-- {{ movieForm.get('genre')?.value | json }}      -->
+              </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button [mat-dialog-close]="true" color="warn" cdkFocusInitial [disabled]="!movieForm.valid" (click)="onSubmit()">Submit</button>
+</mat-dialog-actions>
