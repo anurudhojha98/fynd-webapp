@@ -8,6 +8,9 @@ const routes: Routes = [
     path:'',redirectTo:'/movies-list',pathMatch:'full'
   },
   {
+    path:'/',redirectTo:'/movies-list',pathMatch:'full'
+  },
+  {
     path:'login',component:LoginComponent
   },
   {
